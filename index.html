@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engelkesystems | Soluções Web de Alta Performance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --bg-alt: #121212;
+            --primary: #00e5ff;
+            --primary-hover: #00b3cc;
+            --text-main: #ffffff;
+            --text-muted: #b3b3b3;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(0, 229, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px; /* Offset for navbar */
+            background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.05) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .about {
+            background-color: var(--bg-alt);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--bg-color);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tech-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            bottom: 20px;
+            left: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            z-index: -1;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--bg-alt);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .services {
+            background-color: var(--bg-alt);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .service-card {
+            background-color: var(--bg-color);
+            padding: 50px 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            background: rgba(0, 229, 255, 0.1);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .service-desc {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .service-price {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-price i {
+            color: var(--primary);
+        }
+
+        .contact {
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-alt) 100%);
+        }
+
+        .contact-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 60px;
+            border-radius: 24px;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-item-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contact-item span {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: var(--bg-color);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.5rem; }
+            .about-grid, .services-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-image::after { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; 
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-buttons { flex-direction: column; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .contact-box { padding: 40px 20px; }
+            .section-title { font-size: 2rem; }
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--primary);
+            color: #000;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1001;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">Engelke<span>systems</span></a>
+            <nav class="nav-links">
+                <a href="#sobre">Sobre Mim</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Soluções Web de <span class="highlight">Alta Performance</span></h1>
+                <p>Criamos sites corporativos e landing pages desenvolvidas estritamente para conversão, velocidade e resultados reais.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> Solicitar Orçamento
+                    </a>
+                    <a href="#projetos" class="btn btn-outline">
+                        Ver Projetos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about section-padding" id="sobre">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Ambiente de desenvolvimento web">
+            </div>
+            <div class="about-text">
+                <h2>Desenvolvimento estratégico para o seu negócio</h2>
+                <p>Sou o João Rafael, desenvolvedor web focado em construir a presença digital de empresas através de sites e landing pages de alta performance.</p>
+                <p>Com formação em andamento em Sistemas de Informação e experiência prática em programação no setor público, desenvolvo soluções completas indo do design estratégico até a codificação final.</p>
+                <p>Meu objetivo é entregar projetos que transmitam credibilidade, garantam uma excelente experiência ao usuário e gerem resultados reais para o seu negócio.</p>
+                
+                <div class="tech-stack">
+                    <div class="tech-item"><i class="fa-brands fa-html5"></i> HTML5 & CSS3</div>
+                    <div class="tech-item"><i class="fa-brands fa-js"></i> JavaScript</div>
+                    <div class="tech-item"><i class="fa-brands fa-react"></i> ReactJS</div>
+                    <div class="tech-item"><i class="fa-solid fa-mobile-screen"></i> Design Responsivo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio section-padding" id="projetos">
+        <div class="container">
+            <h2 class="section-title">Projetos em <span>Destaque</span></h2>
+            <p class="section-subtitle">Conheça algumas das plataformas desenvolvidas com foco em conversão e experiência do usuário.</p>
+            
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="LT Advisors" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">LT Advisors</h3>
+                        <p class="project-desc">Plataforma institucional desenvolvida para empresa focada em leilões e gestão de imóveis. O layout transmite credibilidade e segurança, essenciais no mercado de ativos.</p>
+                        <a href="https://engelkejr.github.io/LT-Adivisors/" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=800&auto=format&fit=crop" alt="Projeto Amanhã" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Projeto Amanhã</h3>
+                        <p class="project-desc">Landing page desenvolvida para maximizar o impacto social da ONG. Foco em design acolhedor, acessibilidade e CTAs claros para facilitar o engajamento do público.</p>
+                        <a href="https://projeto-amanh.vercel.app" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modelo de Alta Conversão" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Modelo de Alta Conversão</h3>
+                        <p class="project-desc">Projeto desenvolvido com foco estrito em alta performance, responsividade e UX. Estrutura versátil adaptável a diferentes nichos corporativos.</p>
+                        <a href="https://modelo1engelkejr.vercel.app" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=800&auto=format&fit=crop" alt="Bairro residencial representando Associação de Moradores AMORQC" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">AMORQC</h3>
+                        <p class="project-desc">Plataforma digital para Associação de Moradores do Quebra-Coco. Canal oficial e acessível para informar e engajar a comunidade local.</p>
+                        <a href="https://amorqc.vercel.app" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop" alt="Interface de design criativo" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Modelo Criativo & Dinâmico</h3>
+                        <p class="project-desc">Template focado em interatividade e design visual arrojado. Excelente para agências, criadores de conteúdo e empresas com forte identidade visual.</p>
+                        <a href="https://modelo-site-2.vercel.app/index.html" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services section-padding" id="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossos <span>Serviços</span></h2>
+            <p class="section-subtitle">Desenvolvemos a presença digital que a sua empresa precisa para se destacar no mercado.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h3 class="service-title">Landing Page de Alta Conversão</h3>
+                    <p class="service-desc">Desenvolvida para focar em um único objetivo: transformar visitantes em clientes. Ideal para campanhas de vendas, lançamentos ou captura de contatos (leads). Conta com design moderno, gatilhos mentais visuais e carregamento ultra-rápido.</p>
+                    <div class="service-price">
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Orçamento sob consulta
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-building"></i></div>
+                    <h3 class="service-title">Site Institucional Completo</h3>
+                    <p class="service-desc">A solução robusta para empresas que precisam de uma presença digital sólida e profissional. Inclui a criação de várias páginas (Início, Quem Somos, Serviços, Contato), estrutura otimizada para o Google (SEO) e painel integrado.</p>
+                    <div class="service-price">
+                        <i class="fa-solid fa-file-invoice-dollar"></i> Orçamento sob consulta
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact section-padding" id="contato">
+        <div class="container">
+            <div class="contact-box">
+                <h2 class="section-title">Pronto para impulsionar seu <span>negócio?</span></h2>
+                <p class="section-subtitle" style="margin-bottom: 40px; color: #fff;">Fale com a Engelkesystems. Solicite seu orçamento e vamos construir sua presença digital.</p>
+                
+                <div class="contact-methods">
+                    <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="contact-item">
+                        <div class="contact-item-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                        <span>(21) 97289-4449</span>
+                    </a>
+                    <a href="#" onclick="copyEmail(event)" class="contact-item">
+                        <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <span>engelkesystems@gmail.com</span>
+                    </a>
+                </div>
+
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="btn btn-primary" style="padding: 16px 32px; font-size: 1.1rem;">
+                        <i class="fa-brands fa-whatsapp"></i> Falar via WhatsApp
+                    </a>
+                    <a href="#" onclick="copyEmail(event)" class="btn btn-outline" style="padding: 16px 32px; font-size: 1.1rem; background: rgba(0, 229, 255, 0.05);">
+                        <i class="fa-solid fa-copy"></i> Copiar E-mail
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Engelkesystems. Todos os direitos reservados.</p>
+            <p style="margin-top: 5px; font-size: 0.8rem;">Desenvolvido com excelência por João Rafael.</p>
+        </div>
+    </footer>
+
+    <div id="toast"><i class="fa-solid fa-check"></i> E-mail copiado com sucesso!</div>
+    <textarea id="hidden-email" style="position: absolute; left: -9999px;" aria-hidden="true">engelkesystems@gmail.com</textarea>
+
+    <script>
+        function copyEmail(e) {
+            e.preventDefault();
+            var copyText = document.getElementById("hidden-email");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            
+            var toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+    </script>
+</body>
+</html>
