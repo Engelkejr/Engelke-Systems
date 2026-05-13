@@ -343,35 +343,20 @@
             background-color: var(--bg-alt);
         }
 
-  Para "alargar" os cards e deixá-los com mais corpo (gordinhos), você precisa diminuir o número de colunas. Com 6 colunas em uma linha só, eles sempre serão estreitos.
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
 
-Altere o seu .services-grid para usar 3 colunas. Isso fará com que os 6 serviços fiquem organizados em duas linhas de três, preenchendo muito melhor a tela.
-
-Substitua esse trecho no seu CSS:
-
-CSS
-services-grid {
-    display: grid;
-    /* Mantemos 3 colunas para eles ficarem largos/gordinhos */
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px; 
-    margin-top: 40px;
-    /* Limitamos a largura total para eles não ficarem GIGANTES em telas 4K */
-    max-width: 1200px; 
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.service-card {
-    /* O seu padding atual já ajuda a dar volume */
-    padding: 50px 30px; 
-    /* Outros estilos que você já tem... */
-}
-.service-list {
-    margin-top: 15px;
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
+        .service-card {
+            background-color: var(--bg-color);
+            padding: 50px 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
 
         .service-card::before {
             content: '';
@@ -418,7 +403,6 @@ services-grid {
         .service-price i {
             color: var(--primary);
         }
-
         .contact {
             text-align: center;
             background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-alt) 100%);
