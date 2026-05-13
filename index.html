@@ -344,19 +344,40 @@
         }
 
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 40px;
-        }
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    /* Diminuímos o gap para dar mais espaço interno aos cards */
+    gap: 15px; 
+    margin-top: 40px;
+}
 
-        .service-card {
-            background-color: var(--bg-color);
-            padding: 50px 40px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
+.service-card {
+    background-color: var(--bg-color);
+    padding: 40px 15px; 
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.service-card h3 {
+    font-size: 1rem; 
+    margin-top: 15px;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.service-list {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
 
         .service-card::before {
             content: '';
@@ -625,9 +646,9 @@
                     <h3 class="service-title">1. Landing Page Express</h3>
                     <p class="service-desc">Página única focada 100% em conversão imediata. Ideal para lançamentos e anúncios específicos[cite: 4, 5].</p>
                     <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Design de alta conversão [cite: 6]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Carregamento ultra-rápido [cite: 7]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Botão WhatsApp fixo [cite: 9]</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Design de alta conversão</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Carregamento ultra-rápido</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Botão WhatsApp fixo </li>
                     </ul>
                 </div>
 
@@ -636,20 +657,20 @@
                     <h3 class="service-title">2. Site Institucional</h3>
                     <p class="service-desc">Vitrine profissional completa para mercados e clínicas que buscam autoridade[cite: 13].</p>
                     <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Múltiplas páginas [cite: 14]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> SEO local para buscas [cite: 16]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Integração Google Maps [cite: 17]</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Múltiplas páginas</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> SEO local para buscas</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Integração Google Maps</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
                     <h3 class="service-title">3. Catálogo Digital</h3>
-                    <p class="service-desc">Ideal para mercados que recebem pedidos diretamente pelo WhatsApp, de forma organizada[cite: 21].</p>
+                    <p class="service-desc">Ideal para mercados que recebem pedidos diretamente pelo WhatsApp, de forma organizada.</p>
                     <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Galeria categorizada [cite: 22]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Pedido via WhatsApp [cite: 25]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> QR Code para balcão [cite: 24]</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Galeria categorizada</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Pedido via WhatsApp</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> QR Code para balcão</li>
                     </ul>
                 </div>
 
@@ -658,9 +679,9 @@
                     <h3 class="service-title">4. Loja Virtual</h3>
                     <p class="service-desc">Sua loja aberta 24h com pagamentos automatizados e gestão de estoque profissional[cite: 30].</p>
                     <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Pix, Cartão e Boleto [cite: 34]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Cálculo de frete [cite: 32]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Carrinho completo [cite: 31]</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Pix, Cartão e Boleto</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Cálculo de frete</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Carrinho completo</li>
                     </ul>
                 </div>
 
@@ -669,9 +690,9 @@
                     <h3 class="service-title">5. Blog / Portal</h3>
                     <p class="service-desc">Atraia milhares de visitantes orgânicos com conteúdos otimizados para o Google[cite: 36, 37].</p>
                     <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Otimização SEO [cite: 41]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Sistema de busca [cite: 43]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Newsletter [cite: 42]</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Otimização SEO</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Sistema de busca</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Newsletter</li>
                     </ul>
                 </div>
 
@@ -680,9 +701,9 @@
                     <h3 class="service-title">6. Link de Bio</h3>
                     <p class="service-desc">Página exclusiva no seu domínio para substituir o Linktree com a sua cara[cite: 45, 46].</p>
                     <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Design 100% autoral [cite: 47]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Análise de cliques [cite: 50]</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Personalização total [cite: 49]</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Design 100% autoral</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Análise de cliques</li>
+                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Personalização total</li>
                     </ul>
                 </div>
             </div>
