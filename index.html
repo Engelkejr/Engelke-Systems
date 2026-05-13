@@ -343,17 +343,29 @@
             background-color: var(--bg-alt);
         }
 
-        .services-grid {
+  Para "alargar" os cards e deixá-los com mais corpo (gordinhos), você precisa diminuir o número de colunas. Com 6 colunas em uma linha só, eles sempre serão estreitos.
+
+Altere o seu .services-grid para usar 3 colunas. Isso fará com que os 6 serviços fiquem organizados em duas linhas de três, preenchendo muito melhor a tela.
+
+Substitua esse trecho no seu CSS:
+
+CSS
+.services-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    /* Diminuímos o gap para dar mais espaço interno aos cards */
-    gap: 15px; 
+    /* Mudando de 6 para 3 colunas para ganhar largura */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
     margin-top: 40px;
+    /* Centraliza o grid se a tela for muito larga */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .service-card {
     background-color: var(--bg-color);
-    padding: 60px 35px; 
+    /* Mantendo seu padding, agora ele terá espaço para brilhar */
+    padding: 60px 35px;  
     border-radius: 16px;
     border: 1px solid var(--border-color);
     position: relative;
@@ -363,14 +375,16 @@
     align-items: center;
     text-align: center;
     transition: transform 0.3s ease, border-color 0.3s ease;
+    /* Garante que o card ocupe a altura total da linha */
+    height: 100%; 
 }
 
+/* Ajuste para o título ficar imponente no card maior */
 .service-card h3 {
-    font-size: 1rem; 
+    font-size: 1.4rem; 
     margin-top: 15px;
-    min-height: 3rem;
-    display: flex;
-    align-items: center;
+    margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .service-list {
