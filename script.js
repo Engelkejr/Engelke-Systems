@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 function copyEmail(e) {
-=======
+
         function copyEmail(e) {
->>>>>>> 03bc817fedc5e8b77b0a1ef2be6f0924f612ef1a
+
             e.preventDefault();
             var copyText = document.getElementById("hidden-email");
             copyText.select();
