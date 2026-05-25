@@ -237,17 +237,6 @@
     <div id="toast"><i class="fa-solid fa-check"></i> E-mail copiado com sucesso!</div>
     <textarea id="hidden-email" style="position: absolute; left: -9999px;" aria-hidden="true">engelkesystems@gmail.com</textarea>
 
-    <script>
-        function copyEmail(e) {
-            e.preventDefault();
-            var copyText = document.getElementById("hidden-email");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); 
-            
-            var toast = document.getElementById("toast");
-            toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-        }
-    </script>
+   <script src="script.js"></script>
 </body>
 </html>
