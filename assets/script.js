@@ -1,23 +1,100 @@
-(function(){
-  const container=document.getElementById('particles');
-  for(let i=0;i<25;i++){
-    const p=document.createElement('div');
-    p.className='particle';
-    const size=Math.random()*3+1;
-    const left=Math.random()*100;
-    const duration=Math.random()*20+15;
-    const delay=Math.random()*20;
-    const drift=(Math.random()-0.5)*200+'px';
-    p.style.cssText=`
-      width:${size}px;height:${size}px;
-      left:${left}%;
-      animation-duration:${duration}s;
-      animation-delay:-${delay}s;
-      --drift:${drift};
-    `;
-    container.appendChild(p);
-  }
-})();
+// --- SISTEMA DE REDE NEURAL (PLEXUS 3D) ---
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let width, height;
+let particles = [];
+
+function initCanvas() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', initCanvas);
+initCanvas();
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.z = Math.random() * 2 + 0.5; // Profundidade 3D
+        this.vx = (Math.random() - 0.5) * 0.8;
+        this.vy = (Math.random() - 0.5) * 0.8;
+        this.radius = Math.random() * 1.5 + 0.5;
+    }
+    update() {
+        this.x += this.vx / this.z;
+        this.y += this.vy / this.z;
+        
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 212, 255, ${0.8 / this.z})`; 
+        ctx.fill();
+    }
+}
+
+// Criar partículas
+for (let i = 0; i < 120; i++) {
+    particles.push(new Particle());
+}
+
+// Rastrear mouse para interação
+let mouse = { x: null, y: null };
+window.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+window.addEventListener('mouseout', () => {
+    mouse.x = null; mouse.y = null;
+});
+
+function animateCanvas() {
+    ctx.clearRect(0, 0, width, height);
+    
+    for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        
+        // Conectar partículas próximas (Efeito Plexus)
+        for (let j = i; j < particles.length; j++) {
+            let dx = particles[i].x - particles[j].x;
+            let dy = particles[i].y - particles[j].y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            
+            if (dist < 100) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(26, 58, 255, ${1 - dist/100})`;
+                ctx.lineWidth = 0.6;
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+            }
+        }
+
+        // Conexão com o mouse (Campo magnético)
+        if (mouse.x != null) {
+            let dx = particles[i].x - mouse.x;
+            let dy = particles[i].y - mouse.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            
+            if (dist < 150) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(0, 212, 255, ${0.8 - dist/150})`;
+                ctx.lineWidth = 1;
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+            }
+        }
+    }
+    requestAnimationFrame(animateCanvas);
+}
+animateCanvas();
+// --- FIM DA REDE NEURAL ---
+
+// (Mantenha o restante do seu código JavaScript intacto abaixo desta linha, como o IntersectionObserver, Menu, Form, etc.)
 
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
