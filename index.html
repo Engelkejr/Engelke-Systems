@@ -1,297 +1,462 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="-MGNU7web0cS8hkdxS_ydJgAFxSk7pQkq0pgJhe4vGw" />
-    <title>Engelkesystems | Soluções Web de Alta Performance</title>
-    <meta name="description" content="Desenvolvimento de Landing Pages Express e sites profissionais de alta performance. Otimize sua presença digital e atraia mais clientes. Solicite um orçamento!">
-    <meta property="og:title" content="Engelkesystems | Soluções Web de Alta Performance" />
-    <meta property="og:description" content="Desenvolvimento de Landing Pages Express e sites profissionais de alta performance." />
-    <meta property="og:url" content="https://engelkesystems.vercel.app" />
-    <meta property="og:type" content="website" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/png" href="assets/img/Favicon branco.png" media="(prefers-color-scheme: dark)">
-    <link rel="icon" type="image/png" href="assets/img/Favicon Preto.png" media="(prefers-color-scheme: light)">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Engelke Systems - Desenvolvimento de sites corporativos e landing pages de alta performance. Soluções web profissionais para o seu negócio.">
+<title>Engelke Systems | Soluções Web de Alta Performance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">Engelke<span>systems</span></a>
-            <nav class="nav-links">
-                <a href="#sobre">Sobre Mim</a>
-                <a href="#projetos">Projetos</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#contato">Contato</a>
-            </nav>
-            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
-        </div>
-    </header>
+<!-- Particles -->
+<div id="particles"></div>
 
-    <section class="hero" id="inicio">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Soluções Web de <span class="highlight">Alta Performance</span></h1>
-                <p>Criamos sites corporativos e landing pages desenvolvidas estritamente para conversão, velocidade e resultados reais.</p>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="btn btn-primary">
-                        <i class="fa-brands fa-whatsapp"></i> Solicitar Orçamento
-                    </a>
-                    <a href="#projetos" class="btn btn-outline">
-                        Ver Projetos
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">
+    <div class="logo-mark">ES</div>
+    Engelke Systems
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#servicos">Servicos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="nav-cta" target="_blank">Solicitar Orcamento</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-    <section class="about section-padding" id="sobre">
-    <div class="container about-grid">
-        <div class="about-image">
-            <img src="assets/img/Foto-notebook.webp" alt="Ambiente de desenvolvimento web">
-        </div>
-        <div class="about-text">
-            <h2>Desenvolvimento estratégico para o seu negócio</h2>
-            <p>Sou o João Rafael, desenvolvedor web focado em construir a presença digital de empresas através de sites e landing pages de alta performance.</p>
-            <p>Com formação em andamento em Sistemas de Informação e experiência prática em programação no setor público, desenvolvo soluções completas indo do design estratégico até a codificação final.</p>
-            <p>Meu objetivo é entregar projetos que transmitam credibilidade, garantam uma excelente experiência ao usuário e gerem resultados reais para o seu negócio.</p>
-            
-            <div class="tech-stack">
-                <div class="tech-item"><i class="fa-brands fa-js"></i> JavaScript (ES6+)</div>
-                <div class="tech-item"><i class="fa-brands fa-react"></i> ReactJS</div>
-                <div class="tech-item"><i class="fa-solid fa-database"></i> Banco de Dados SQL</div>
-                <div class="tech-item"><i class="fa-solid fa-screwdriver-wrench"></i> Manutenção & Suporte</div>
-                <div class="tech-item"><i class="fa-solid fa-mobile-screen-button"></i> Design Responsivo</div>
-                <div class="tech-item"><i class="fa-brands fa-html5"></i> HTML5 & CSS3</div>
-            </div>
-        </div>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="closeMobile()">Sobre</a>
+  <a href="#projetos" onclick="closeMobile()">Projetos</a>
+  <a href="#servicos" onclick="closeMobile()">Servicos</a>
+  <a href="#contato" onclick="closeMobile()">Contato</a>
+  <a href="https://wa.me/5521972894449" target="_blank" style="color:var(--cyan)">WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-grid-fade"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge reveal">
+      <span class="badge-dot"></span>
+      Disponivel para novos projetos
     </div>
+    <h1 class="reveal">
+      Engenharia Web<br>
+      <span class="line-blue">de Alta Performance</span>
+    </h1>
+    <p class="hero-sub reveal">
+      Desenvolvemos sites corporativos, landing pages e plataformas digitais
+      construidas para converter, escalar e durar. Cada linha de codigo pensada
+      para o crescimento do seu negocio.
+    </p>
+    <div class="hero-actions reveal">
+      <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-primary" target="_blank">
+        Solicitar Orcamento
+      </a>
+      <a href="#projetos" class="btn-outline">Ver Projetos</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
 </section>
 
-<section class="portfolio section-padding" id="projetos">
-    <div class="container">
-        <h2 class="section-title">Projetos em <span>Destaque</span></h2>
-        <p class="section-subtitle">Conheça algumas das plataformas desenvolvidas com foco em conversão e experiência do usuário.</p>
-        
-        <div class="portfolio-grid">
-            <div class="project-card">
-                <img src="assets/img/foto-bolsas.webp" alt="Catálogo Digital e E-commerce" class="project-img">
-                <div class="project-content">
-                    <h3 class="project-title">Catálogo Digital Inteligente</h3>
-                    <p class="project-desc">Sistema completo com Painel Administrativo, carrinho de compras e integração direta com WhatsApp. Desenvolvido com Next.js 15, Tailwind e Supabase.</p>
-                    <a href="https://modelo-site-3.vercel.app/loja" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
+<div class="glow-line"></div>
 
-            <div class="project-card">
-                <img src="assets/img/LT-ADVISORS.webp" alt="LT Advisors" class="project-img">
-                <div class="project-content">
-                    <h3 class="project-title">LT Advisors</h3>
-                    <p class="project-desc">Plataforma institucional desenvolvida para empresa focada em leilões e gestão de imóveis. O layout transmite credibilidade e segurança.</p>
-                    <a href="https://engelkejr.github.io/LT-Adivisors/" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-visual reveal-left">
+      <div class="sobre-card-3d">
+        <div class="sobre-inner">
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1.5rem;color:var(--white)">Stack Tecnica</p>
+          <div class="skill-bar">
+            <div class="skill-label"><span>React / Next.js</span><span>95%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:0%" data-width="95%"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-label"><span>JavaScript / TypeScript</span><span>90%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:0%" data-width="90%"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-label"><span>HTML5 / CSS3</span><span>98%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:0%" data-width="98%"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-label"><span>Node.js / Supabase</span><span>80%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:0%" data-width="80%"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-label"><span>SQL / Banco de Dados</span><span>85%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:0%" data-width="85%"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-label"><span>SEO / Performance</span><span>92%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="width:0%" data-width="92%"></div></div>
+          </div>
+          <div class="stats-row" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+            <div class="stat-item">
+              <div class="stat-num">15<span>+</span></div>
+              <div class="stat-label">Projetos</div>
             </div>
-
-            <div class="project-card">
-                <img src="assets/img/ong.webp" alt="Projeto Amanhã" class="project-img">
-                <div class="project-content">
-                    <h3 class="project-title">Projeto Amanhã</h3>
-                    <p class="project-desc">Landing page desenvolvida para maximizar o impacto social da ONG. Foco em design acolhedor, acessibilidade e CTAs claros.</p>
-                    <a href="https://projeto-amanh.vercel.app" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
+            <div class="stat-item">
+              <div class="stat-num">3<span>+</span></div>
+              <div class="stat-label">Anos</div>
             </div>
-
-            <div class="project-card">
-                <img src="assets/img/dashboard-generico.webp" alt="Modelo de Alta Conversão" class="project-img">
-                <div class="project-content">
-                    <h3 class="project-title">Modelo de Alta Conversão</h3>
-                    <p class="project-desc">Projeto desenvolvido com foco estrito em alta performance, responsividade e UX. Estrutura versátil adaptável a diferentes nichos corporativos.</p>
-                    <a href="https://modelo1engelkejr.vercel.app" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
+            <div class="stat-item">
+              <div class="stat-num">100<span>%</span></div>
+              <div class="stat-label">Satisfacao</div>
             </div>
-
-            <div class="project-card">
-                <img src="assets/img/notebook-2.webp" alt="Interface de design criativo" class="project-img">
-                <div class="project-content">
-                    <h3 class="project-title">Modelo Criativo & Dinâmico</h3>
-                    <p class="project-desc">Template focado em interatividade e design visual arrojado. Excelente para agências, criadores de conteúdo e empresas com forte identidade visual.</p>
-                    <a href="https://modelo-site-2.vercel.app/index.html" target="_blank" class="project-link">Acessar Projeto <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+
+    <div class="sobre-text reveal-right">
+      <div class="section-label">Sobre</div>
+      <h2 class="section-title">Desenvolvimento estrategico para o seu negocio</h2>
+      <p>Sou o Joao Rafael, desenvolvedor web focado em construir a presenca digital de empresas atraves de sites e landing pages de alta performance.</p>
+      <p>Com formacao em Sistemas de Informacao e experiencia pratica no setor publico, desenvolvo solucoes completas — do design estrategico ate a codificacao final — com foco em resultados reais.</p>
+      <p>Na Engelke Systems, cada projeto e tratado como uma oportunidade de criar algo duradouro, seguro e escalavel. Tecnologia a servico do seu crescimento.</p>
+      <a href="#contato" class="btn-primary" style="margin-top:1.5rem;display:inline-flex">Falar com o Joao Rafael</a>
+    </div>
+  </div>
 </section>
 
-    <section class="services section-padding" id="servicos">
-        <div class="container">
-            <h2 class="section-title">Nossos <span>Serviços</span></h2>
-            <p class="section-subtitle">Desenvolvemos a presença digital que a sua empresa precisa para se destacar no mercado.</p>
+<div class="glow-line"></div>
 
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-rocket"></i></div>
-                    <h3 class="service-title">1. Landing Page Express</h3>
-                    <p class="service-desc">Página única focada 100% em conversão imediata. Ideal para lançamentos e anúncios específicos.</p>
-                    <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Design de alta conversão</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Carregamento ultra-rápido</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Botão WhatsApp fixo </li>
-                    </ul>
-                </div>
+<!-- PROJETOS -->
+<section id="projetos">
+  <div class="section-header reveal">
+    <div class="section-label">Portfólio</div>
+    <h2 class="section-title">Projetos em Destaque</h2>
+    <p class="section-desc">Plataformas desenvolvidas com foco em conversao, performance e experiencia do usuario.</p>
+  </div>
 
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-building"></i></div>
-                    <h3 class="service-title">2. Site Institucional</h3>
-                    <p class="service-desc">Vitrine profissional completa para mercados e clínicas que buscam autoridade.</p>
-                    <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Múltiplas páginas</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> SEO local para buscas</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Integração Google Maps</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
-                    <h3 class="service-title">3. Catálogo Digital</h3>
-                    <p class="service-desc">Ideal para mercados que recebem pedidos diretamente pelo WhatsApp, de forma organizada.</p>
-                    <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Galeria categorizada</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Pedido via WhatsApp</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> QR Code para balcão</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                    <h3 class="service-title">4. Loja Virtual</h3>
-                    <p class="service-desc">Sua loja aberta 24h com pagamentos automatizados e gestão de estoque profissional.</p>
-                    <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Pix, Cartão e Boleto</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Cálculo de frete</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Carrinho completo</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
-                    <h3 class="service-title">5. Blog / Portal</h3>
-                    <p class="service-desc">Atraia milhares de visitantes orgânicos com conteúdos otimizados para o Google.</p>
-                    <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Otimização SEO</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Sistema de busca</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Newsletter</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-link"></i></div>
-                    <h3 class="service-title">6. Link de Bio</h3>
-                    <p class="service-desc">Página exclusiva no seu domínio para substituir o Linktree com a sua cara.</p>
-                    <ul class="service-list" style="list-style: none; padding: 0; font-size: 0.9rem; color: #94a3b8; text-align: left; margin-top: 10px;">
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Design 100% autoral</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Análise de cliques</li>
-                        <li><i class="fa-solid fa-check" style="color: #00e5ff;"></i> Personalização total</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="margin-top: 50px; background: rgba(0, 229, 255, 0.1); padding: 30px; border-radius: 15px; text-align: center; border: 1px dashed #00e5ff;">
-                <h3 style="color: #00e5ff; margin-bottom: 15px;"><i class="fa-solid fa-shield-halved"></i> Suporte e Manutenção Engelke Systems</h3>
-                <p style="color: #cbd5e1; max-width: 800px; margin: 0 auto;">Oferecemos planos de hospedagem e atualização contínua para que seu negócio nunca pare. Você foca nas vendas, nós cuidamos de toda a tecnologia e segurança do seu site.</p>
-            </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-img">
+        <img src="https://engelkesystems.vercel.app/assets/img/foto-bolsas.webp" alt="Catalogo Digital" loading="lazy">
+        <div class="project-overlay"></div>
+        <div class="project-tech">
+          <span class="tech-tag">Next.js 15</span>
+          <span class="tech-tag">Supabase</span>
+          <span class="tech-tag">Tailwind</span>
         </div>
-    </section>
-       <section class="testimonials section-padding" id="depoimentos">
-    <div class="container">
-        <h2 class="section-title">Nosso <span>compromisso</span></h2>
-        <div class="testimonial-card" style="max-width: 600px; margin: 40px auto; background: rgba(0, 229, 255, 0.05); padding: 30px; border-radius: 15px; border: 1px dashed var(--primary); text-align: center;">
-            <p style="font-style: italic; margin-bottom: 15px; color: #fff;">"Na Engelke Systems, acreditamos que todo negócio merece uma infraestrutura digital robusta, segura e de alta performance. Desenvolvemos cada linha de código pensando na longevidade e no crescimento do seu projeto."</p>
-            <h4 style="color: var(--primary);">— João Rafael, Engenheiro de Software</h4>
-        </div>
+      </div>
+      <div class="project-info">
+        <h3>Catalogo Digital Inteligente</h3>
+        <p>Sistema completo com painel administrativo, carrinho de compras e integração direta com WhatsApp.</p>
+        <a href="https://modelo-site-3.vercel.app/loja" class="project-link" target="_blank">Acessar Projeto</a>
+      </div>
     </div>
-</section>         
 
-    <section class="contact section-padding" id="contato">
-        <div class="container">
-            <div class="contact-box">
-                <h2 class="section-title">Solicite seu <span>Orçamento</span></h2>
-                <p class="section-subtitle" style="margin-bottom: 40px; color: #b3b3b3;">Preencha o formulário abaixo e entraremos em contato rapidamente pelo WhatsApp.</p>
-
-                <div class="quote-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nome"><i class="fa-solid fa-user"></i> Seu Nome</label>
-                            <input type="text" id="nome" placeholder="Ex: Maria Silva" />
-                        </div>
-                        <div class="form-group">
-                            <label for="empresa"><i class="fa-solid fa-building"></i> Empresa / Negócio</label>
-                            <input type="text" id="empresa" placeholder="Ex: Salão da Maria" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fa-solid fa-layer-group"></i> Qual serviço te interessa?</label>
-                        <div class="service-options">
-                            <label class="service-option"><input type="radio" name="servico" value="Landing Page Express"> Landing Page Express</label>
-                            <label class="service-option"><input type="radio" name="servico" value="Site Institucional"> Site Institucional</label>
-                            <label class="service-option"><input type="radio" name="servico" value="Catálogo Digital"> Catálogo Digital</label>
-                            <label class="service-option"><input type="radio" name="servico" value="Loja Virtual"> Loja Virtual</label>
-                            <label class="service-option"><input type="radio" name="servico" value="Blog / Portal"> Blog / Portal</label>
-                            <label class="service-option"><input type="radio" name="servico" value="Link de Bio"> Link de Bio</label>
-                            <label class="service-option"><input type="radio" name="servico" value="Não tenho certeza"> Não tenho certeza ainda</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="mensagem"><i class="fa-solid fa-pen-to-square"></i> Conte sobre o seu projeto</label>
-                        <textarea id="mensagem" rows="4" placeholder="Ex: Tenho uma clínica e quero um site para atrair mais pacientes pelo Google. Preciso de página de contato e integração com WhatsApp..."></textarea>
-                    </div>
-
-                    <button class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 18px;" onclick="enviarOrcamento()">
-                        <i class="fa-brands fa-whatsapp"></i> Enviar Orçamento pelo WhatsApp
-                    </button>
-                </div>
-
-
-                
-    </section>
-
-    <footer>
-        
-        <div class="contact-methods" style="margin-bottom: 0;">
-                    <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="contact-item">
-                        <div class="contact-item-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                        <span>(21) 97289-4449</span>
-                    </a>
-                    <a href="#" onclick="copyEmail(event)" class="contact-item">
-                        <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
-                        <span>engelkesystems@gmail.com</span>
-                    </a>
-                    <a href="https://www.instagram.com/engelkesystems?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="contact-item">
-                        <div class="contact-item-icon"><i class="fa-brands fa-instagram"></i></div>
-                        <span>@engelkesystems</span>
-                    </a>
-                </div>
-                </div>
-                
-            </div>
+    <div class="project-card reveal">
+      <div class="project-img">
+        <img src="https://engelkesystems.vercel.app/assets/img/LT-ADVISORS.webp" alt="LT Advisors" loading="lazy">
+        <div class="project-overlay"></div>
+        <div class="project-tech">
+          <span class="tech-tag">HTML5</span>
+          <span class="tech-tag">CSS3</span>
+          <span class="tech-tag">JS</span>
         </div>
-        <br>
-        <br>
-        <div class="container">
-            <p>&copy; 2024 Engelkesystems. Todos os direitos reservados.</p>
-            <p style="margin-top: 5px; font-size: 0.8rem;">Desenvolvido com excelência por João Rafael.</p>
+      </div>
+      <div class="project-info">
+        <h3>LT Advisors</h3>
+        <p>Plataforma institucional para empresa de leilões e gestão de imóveis. Layout que transmite credibilidade e seguranca.</p>
+        <a href="https://engelkejr.github.io/LT-Adivisors/" class="project-link" target="_blank">Acessar Projeto</a>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-img">
+        <img src="https://engelkesystems.vercel.app/assets/img/ong.webp" alt="Projeto Amanhã" loading="lazy">
+        <div class="project-overlay"></div>
+        <div class="project-tech">
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">SEO</span>
         </div>
-    </footer>
+      </div>
+      <div class="project-info">
+        <h3>Projeto Amanha - ONG</h3>
+        <p>Landing page desenvolvida para maximizar o impacto social. Foco em design acolhedor, acessibilidade e CTAs claros.</p>
+        <a href="https://projetoamanhaconservatoria.vercel.app" class="project-link" target="_blank">Acessar Projeto</a>
+      </div>
+    </div>
 
-    <div id="toast"><i class="fa-solid fa-check"></i> E-mail copiado com sucesso!</div>
-    <textarea id="hidden-email" style="position: absolute; left: -9999px;" aria-hidden="true">engelkesystems@gmail.com</textarea>
+    <div class="project-card reveal">
+      <div class="project-img">
+        <img src="https://engelkesystems.vercel.app/assets/img/dashboard-generico.webp" alt="Modelo Alta Conversao" loading="lazy">
+        <div class="project-overlay"></div>
+        <div class="project-tech">
+          <span class="tech-tag">Performance</span>
+          <span class="tech-tag">UX</span>
+        </div>
+      </div>
+      <div class="project-info">
+        <h3>Modelo de Alta Conversao</h3>
+        <p>Projeto com foco estrito em alta performance, responsividade e UX. Estrutura adaptavel a diferentes nichos corporativos.</p>
+        <a href="https://modelo1engelkejr.vercel.app" class="project-link" target="_blank">Acessar Projeto</a>
+      </div>
+    </div>
 
-   <script src="/assets/js/script.js" charset="utf-8"></script>
+    <div class="project-card reveal">
+      <div class="project-img" style="height:240px">
+        <img src="https://engelkesystems.vercel.app/assets/img/notebook-2.webp" alt="Modelo Criativo" loading="lazy">
+        <div class="project-overlay"></div>
+        <div class="project-tech">
+          <span class="tech-tag">Interatividade</span>
+          <span class="tech-tag">Design Visual</span>
+          <span class="tech-tag">Animacoes</span>
+        </div>
+      </div>
+      <div class="project-info">
+        <h3>Modelo Criativo e Dinamico</h3>
+        <p>Template focado em interatividade e design visual arrojado. Ideal para agencias, criadores de conteudo e empresas com forte identidade visual.</p>
+        <a href="https://modelo-site-2.vercel.app/index.html" class="project-link" target="_blank">Acessar Projeto</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-line"></div>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-header reveal">
+    <div class="section-label">Serviços</div>
+    <h2 class="section-title">Soluções para cada etapa</h2>
+    <p class="section-desc">Desenvolvemos a presenca digital que a sua empresa precisa para se destacar no mercado.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card highlight reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <h3>Landing Page Express</h3>
+      <p>Pagina unica focada 100% em conversao imediata. Ideal para lancamentos e campanhas de anuncios.</p>
+      <ul class="service-list">
+        <li>Design de alta conversao</li>
+        <li>Carregamento ultra-rapido</li>
+        <li>Botao WhatsApp integrado</li>
+        <li>Analytics configurado</li>
+      </ul>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <h3>Site Institucional</h3>
+      <p>Vitrine profissional completa para empresas que buscam autoridade e presenca online solida.</p>
+      <ul class="service-list">
+        <li>Multiplas paginas</li>
+        <li>SEO local otimizado</li>
+        <li>Integração Google Maps</li>
+        <li>Design responsivo</li>
+      </ul>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </div>
+      <h3>Catalogo Digital</h3>
+      <p>Ideal para comercios que recebem pedidos pelo WhatsApp de forma organizada e automatizada.</p>
+      <ul class="service-list">
+        <li>Galeria categorizada</li>
+        <li>Pedido via WhatsApp</li>
+        <li>QR Code para balcao</li>
+        <li>Painel administrativo</li>
+      </ul>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>Loja Virtual</h3>
+      <p>Sua loja aberta 24h com pagamentos automatizados e gestao de estoque profissional.</p>
+      <ul class="service-list">
+        <li>Pix, Cartao e Boleto</li>
+        <li>Calculo de frete</li>
+        <li>Carrinho completo</li>
+        <li>Gestao de estoque</li>
+      </ul>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h3>Blog / Portal</h3>
+      <p>Atraia visitantes organicos com conteudos otimizados para o Google e construa autoridade no seu setor.</p>
+      <ul class="service-list">
+        <li>Otimizacao SEO</li>
+        <li>Sistema de busca</li>
+        <li>Newsletter integrada</li>
+        <li>Painel de conteudo</li>
+      </ul>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Suporte e Manutencao</h3>
+      <p>Planos de hospedagem e atualizacao continua. Voce foca nas vendas, nos cuidamos da tecnologia.</p>
+      <ul class="service-list">
+        <li>Hospedagem gerenciada</li>
+        <li>Atualizacoes mensais</li>
+        <li>Monitoramento 24/7</li>
+        <li>Suporte prioritario</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tech-float reveal">
+    <span class="tech-pill">React</span>
+    <span class="tech-pill">Next.js</span>
+    <span class="tech-pill">TypeScript</span>
+    <span class="tech-pill">Tailwind CSS</span>
+    <span class="tech-pill">Supabase</span>
+    <span class="tech-pill">Node.js</span>
+    <span class="tech-pill">PostgreSQL</span>
+    <span class="tech-pill">Vercel</span>
+    <span class="tech-pill">HTML5</span>
+    <span class="tech-pill">CSS3</span>
+  </div>
+</section>
+
+<div class="glow-line"></div>
+
+<section id="depoimento">
+  <div class="testimonial-3d reveal">
+    <div class="testimonial-inner">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Na Engelke Systems, acreditamos que todo negocio merece uma infraestrutura digital robusta, segura e de alta performance. Desenvolvemos cada linha de codigo pensando na longevidade e no crescimento do seu projeto.</p>
+      <div class="testimonial-author">Joao Rafael</div>
+      <div class="testimonial-role">Engenheiro de Software | Engelke Systems</div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-line"></div>
+
+<!-- CONTATO / FORMULÁRIO -->
+<section id="contato">
+  <div class="contact-grid">
+    <div class="contact-info reveal-left">
+      <div class="section-label">Contato</div>
+      <h2 class="section-title">Pronto para comecar?</h2>
+      <p>Preencha o formulario e entraremos em contato em ate 24 horas. Voce tambem pode chamar diretamente pelo WhatsApp.</p>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 10.5 19.79 19.79 0 01.88 1.87 2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.64a16 16 0 006.29 6.29l1-1a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="contact-item-text">
+          <span>WhatsApp</span>
+          <a href="https://wa.me/5521972894449" target="_blank">(21) 97289-4449</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="contact-item-text">
+          <span>E-mail</span>
+          <a href="mailto:engelkesystems@gmail.com">engelkesystems@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="contact-item-text">
+          <span>Instagram</span>
+          <a href="https://www.instagram.com/engelkesystems" target="_blank">@engelkesystems</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-3d reveal-right">
+      <form class="form-card" id="contactForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+          </div>
+          <div class="field">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(21) 00000-0000">
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com">
+          </div>
+        </div>
+        <div class="field">
+          <label for="servico">Servico de interesse</label>
+          <select id="servico" name="servico">
+            <option value="" disabled selected>Selecione um servico</option>
+            <option>Landing Page Express</option>
+            <option>Site Institucional</option>
+            <option>Catalogo Digital</option>
+            <option>Loja Virtual</option>
+            <option>Blog / Portal</option>
+            <option>Suporte e Manutenção</option>
+            <option>Ainda não sei quero orientação</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="projeto">Descricao do projeto</label>
+          <textarea id="projeto" name="projeto" placeholder="Conte sobre o seu negocio, objetivos e qualquer detalhe relevante..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar Solicitacao pelo WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Engelke Systems</span>
+  <p class="footer-sub">Engenharia web de alta performance para o seu negocio.</p>
+  <ul class="footer-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#servicos">Servicos</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="https://wa.me/5521972894449" target="_blank">WhatsApp</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Engelke Systems. Desenvolvido com excelencia por Joao Rafael.</p>
+</footer>
+
 </body>
 </html>
