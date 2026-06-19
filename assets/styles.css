@@ -104,47 +104,6 @@ nav{
 .hero-inner{
   position:relative;z-index:2;
   max-width:900px;text-align:center;
-  background:rgba(10,10,15,.45);
-  padding:2.5rem 2rem;
-  border-radius:32px;
-  box-shadow:0 40px 120px rgba(0,0,0,.35);
-  backdrop-filter:blur(18px);
-  overflow:hidden;
-}
-.hero-video{
-  position:absolute;inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 18% 20%, rgba(0,212,255,.22), transparent 18%),
-    radial-gradient(circle at 82% 15%, rgba(92,120,255,.18), transparent 16%),
-    radial-gradient(circle at 50% 75%, rgba(255,255,255,.06), transparent 20%);
-}
-.hero-video::after{
-  content:'';
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255,255,255,.05) 1px, transparent 1px);
-  background-size:120px 120px, 120px 120px;
-  opacity:.7;
-  transform:translateZ(0);
-  animation:heroVideoGrid 12s linear infinite;
-}
-.hero-video::before{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(135deg, rgba(0,212,255,.12), transparent 35%);
-  opacity:.4;
-  animation:heroVideoGlow 8s ease-in-out infinite;
-}
-@keyframes heroVideoGrid{
-  from{background-position:0 0, 0 0}
-  to{background-position:120px 120px, 120px 120px}
-}
-@keyframes heroVideoGlow{
-  0%,100%{opacity:.35;transform:translateY(0)}
-  50%{opacity:.45;transform:translateY(10px)}
 }
 .hero-badge{
   display:inline-flex;align-items:center;gap:.5rem;
@@ -429,7 +388,6 @@ section{padding:7rem 5%}
 .testimonial-role{color:var(--cyan);font-size:.85rem;margin-top:.2rem}
 
 #contato{background:var(--dark)}
-#contactForm{scroll-margin-top:120px;}
 .contact-grid{
   display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;
   max-width:1100px;margin:0 auto;
