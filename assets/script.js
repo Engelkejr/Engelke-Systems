@@ -1,6 +1,6 @@
-// --- SISTEMA DE REDE NEURAL (PLEXUS 3D) ---
+// --- SISTEMA DE REDE NEURAL OTIMIZADO ---
 const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d', { alpha: false }); // Renderização mais rápida
 let width, height;
 let particles = [];
 
@@ -15,9 +15,9 @@ class Particle {
     constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.z = Math.random() * 2 + 0.5; // Profundidade 3D
-        this.vx = (Math.random() - 0.5) * 0.8;
-        this.vy = (Math.random() - 0.5) * 0.8;
+        this.z = Math.random() * 2 + 0.5;
+        this.vx = (Math.random() - 0.5) * 0.5; // Mais lento e suave
+        this.vy = (Math.random() - 0.5) * 0.5;
         this.radius = Math.random() * 1.5 + 0.5;
     }
     update() {
@@ -35,54 +35,57 @@ class Particle {
     }
 }
 
-// Criar partículas
-for (let i = 0; i < 120; i++) {
+// Menos partículas: 40 para mobile, 70 para PC (Acaba com o lag)
+const particleCount = window.innerWidth < 768 ? 40 : 70;
+for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle());
 }
 
-// Rastrear mouse para interação
-let mouse = { x: null, y: null };
+let mouse = { x: -1000, y: -1000 }; // Tira o mouse da tela inicialmente
 window.addEventListener('mousemove', e => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
 });
 window.addEventListener('mouseout', () => {
-    mouse.x = null; mouse.y = null;
+    mouse.x = -1000; mouse.y = -1000;
 });
 
 function animateCanvas() {
-    ctx.clearRect(0, 0, width, height);
+    // Fundo escuro pintado diretamente (mais leve que transparência)
+    ctx.fillStyle = '#050508';
+    ctx.fillRect(0, 0, width, height);
     
     for (let i = 0; i < particles.length; i++) {
         particles[i].update();
         particles[i].draw();
         
-        // Conectar partículas próximas (Efeito Plexus)
-        for (let j = i; j < particles.length; j++) {
+        for (let j = i + 1; j < particles.length; j++) {
             let dx = particles[i].x - particles[j].x;
             let dy = particles[i].y - particles[j].y;
-            let dist = Math.sqrt(dx * dx + dy * dy);
             
+            // OTIMIZAÇÃO ABSURDA: Pula o Math.sqrt se já estiver longe
+            if (Math.abs(dx) > 100 || Math.abs(dy) > 100) continue;
+            
+            let dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 100) {
                 ctx.beginPath();
-                ctx.strokeStyle = `rgba(26, 58, 255, ${1 - dist/100})`;
-                ctx.lineWidth = 0.6;
+                ctx.strokeStyle = `rgba(26, 58, 255, ${0.5 - dist/200})`; // Menos opacidade, mais leve
+                ctx.lineWidth = 0.5;
                 ctx.moveTo(particles[i].x, particles[i].y);
                 ctx.lineTo(particles[j].x, particles[j].y);
                 ctx.stroke();
             }
         }
 
-        // Conexão com o mouse (Campo magnético)
-        if (mouse.x != null) {
-            let dx = particles[i].x - mouse.x;
-            let dy = particles[i].y - mouse.y;
-            let dist = Math.sqrt(dx * dx + dy * dy);
-            
-            if (dist < 150) {
+        // Conexão com o mouse
+        let dxMouse = particles[i].x - mouse.x;
+        let dyMouse = particles[i].y - mouse.y;
+        if (Math.abs(dxMouse) < 150 && Math.abs(dyMouse) < 150) {
+            let distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+            if (distMouse < 150) {
                 ctx.beginPath();
-                ctx.strokeStyle = `rgba(0, 212, 255, ${0.8 - dist/150})`;
-                ctx.lineWidth = 1;
+                ctx.strokeStyle = `rgba(0, 212, 255, ${0.6 - distMouse/250})`;
+                ctx.lineWidth = 0.8;
                 ctx.moveTo(particles[i].x, particles[i].y);
                 ctx.lineTo(mouse.x, mouse.y);
                 ctx.stroke();
@@ -92,9 +95,7 @@ function animateCanvas() {
     requestAnimationFrame(animateCanvas);
 }
 animateCanvas();
-// --- FIM DA REDE NEURAL ---
-
-// (Mantenha o restante do seu código JavaScript intacto abaixo desta linha, como o IntersectionObserver, Menu, Form, etc.)
+// --- FIM DA REDE NEURAL OTIMIZADA ---
 
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
