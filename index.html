@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -7,600 +7,13 @@
 <title>Engelke Systems | Soluções Web de Alta Performance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --black:#0a0a0f;
-    --dark:#0f0f1a;
-    --dark2:#141428;
-    --dark3:#1a1a35;
-    --blue:#1a3aff;
-    --blue2:#3b5bff;
-    --blue3:#5c78ff;
-    --cyan:#00d4ff;
-    --white:#ffffff;
-    --gray:#8892b0;
-    --gray2:#ccd6f6;
-    --border:rgba(26,58,255,0.2);
-    --border2:rgba(0,212,255,0.15);
-    --glow:rgba(26,58,255,0.4);
-  }
-
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Inter',sans-serif;
-    background:var(--black);
-    color:var(--white);
-    overflow-x:hidden;
-    line-height:1.6;
-  }
-
-  /* ===== SCROLLBAR ===== */
-  ::-webkit-scrollbar{width:6px}
-  ::-webkit-scrollbar-track{background:var(--dark)}
-  ::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
-
-  /* ===== NAV ===== */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:1000;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:1.2rem 5%;
-    background:rgba(10,10,15,0.85);
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid var(--border);
-    transition:all .3s;
-  }
-  .nav-logo{
-    font-family:'Space Grotesk',sans-serif;
-    font-weight:700;font-size:1.4rem;
-    color:var(--white);text-decoration:none;
-    display:flex;align-items:center;gap:.6rem;
-    letter-spacing:-0.02em;
-  }
-  .logo-mark{
-    width:34px;height:34px;
-    background:linear-gradient(135deg,var(--blue),var(--cyan));
-    border-radius:8px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:.85rem;font-weight:900;color:#fff;
-    box-shadow:0 0 20px var(--glow);
-  }
-  .nav-links{display:flex;gap:2.5rem;list-style:none}
-  .nav-links a{
-    color:var(--gray);text-decoration:none;font-size:.9rem;font-weight:500;
-    transition:color .2s;letter-spacing:.02em;text-transform:uppercase;font-size:.78rem;
-  }
-  .nav-links a:hover{color:var(--white)}
-  .nav-cta{
-    background:transparent;border:1px solid var(--blue);
-    color:var(--white);padding:.6rem 1.4rem;border-radius:6px;
-    font-size:.85rem;font-weight:600;cursor:pointer;text-decoration:none;
-    transition:all .2s;
-  }
-  .nav-cta:hover{background:var(--blue);box-shadow:0 0 20px var(--glow)}
-
-  /* ===== HERO ===== */
-  .hero{
-    min-height:100vh;
-    display:flex;align-items:center;justify-content:center;
-    position:relative;overflow:hidden;
-    padding:8rem 5% 4rem;
-  }
-
-  /* 3D Grid floor */
-  .hero-grid{
-    position:absolute;inset:0;
-    background-image:
-      linear-gradient(rgba(26,58,255,.12) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(26,58,255,.12) 1px, transparent 1px);
-    background-size:60px 60px;
-    transform:perspective(800px) rotateX(60deg) translateY(-40%);
-    transform-origin:center bottom;
-    opacity:.5;
-    pointer-events:none;
-  }
-  .hero-grid-fade{
-    position:absolute;bottom:0;left:0;right:0;height:50%;
-    background:linear-gradient(to top,var(--black),transparent);
-    pointer-events:none;
-  }
-
-  /* Floating orbs */
-  .orb{
-    position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;
-    animation:float 8s ease-in-out infinite;
-  }
-  .orb1{width:500px;height:500px;background:rgba(26,58,255,.25);top:-100px;right:-100px;animation-delay:0s}
-  .orb2{width:400px;height:400px;background:rgba(0,212,255,.12);bottom:-50px;left:-50px;animation-delay:3s}
-  .orb3{width:300px;height:300px;background:rgba(92,120,255,.2);top:50%;left:40%;animation-delay:5s}
-
-  @keyframes float{
-    0%,100%{transform:translateY(0) scale(1)}
-    50%{transform:translateY(-30px) scale(1.05)}
-  }
-
-  .hero-inner{
-    position:relative;z-index:2;
-    max-width:900px;text-align:center;
-  }
-  .hero-badge{
-    display:inline-flex;align-items:center;gap:.5rem;
-    border:1px solid var(--border);
-    padding:.4rem 1rem;border-radius:50px;
-    font-size:.8rem;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;
-    margin-bottom:2rem;background:rgba(0,212,255,.05);
-  }
-  .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
-  .hero h1{
-    font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(2.8rem,7vw,5.5rem);
-    font-weight:800;line-height:1.05;
-    letter-spacing:-0.03em;
-    margin-bottom:1.5rem;
-  }
-  .hero h1 .line-blue{
-    background:linear-gradient(90deg,var(--blue2),var(--cyan));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    background-clip:text;
-  }
-  .hero-sub{
-    font-size:1.15rem;color:var(--gray);max-width:600px;
-    margin:0 auto 3rem;line-height:1.8;
-  }
-  .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-  .btn-primary{
-    background:var(--blue);color:#fff;
-    padding:.9rem 2.2rem;border-radius:8px;
-    font-weight:700;font-size:.95rem;text-decoration:none;
-    transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;
-    box-shadow:0 0 30px rgba(26,58,255,.5);
-    border:1px solid transparent;
-  }
-  .btn-primary:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 50px rgba(26,58,255,.7);
-    background:var(--blue2);
-  }
-  .btn-outline{
-    background:transparent;color:var(--white);
-    padding:.9rem 2.2rem;border-radius:8px;
-    font-weight:600;font-size:.95rem;text-decoration:none;
-    border:1px solid rgba(255,255,255,.2);
-    transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;
-  }
-  .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.05)}
-
-  /* Scroll indicator */
-  .scroll-indicator{
-    position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-    display:flex;flex-direction:column;align-items:center;gap:.5rem;
-    color:var(--gray);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
-    animation:scrollFade 2s ease infinite;
-  }
-  .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--blue),transparent)}
-  @keyframes scrollFade{0%,100%{opacity:.4}50%{opacity:1}}
-
-  /* ===== 3D CARD SCENE ===== */
-  .scene-3d{
-    perspective:1200px;
-    margin:0 auto;max-width:900px;
-    padding:4rem 0 2rem;
-  }
-  .card-3d{
-    background:linear-gradient(135deg,var(--dark2),var(--dark3));
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:3rem;
-    transform:rotateX(8deg) rotateY(-3deg);
-    transform-style:preserve-3d;
-    box-shadow:
-      0 40px 80px rgba(0,0,0,.8),
-      0 0 0 1px rgba(26,58,255,.1),
-      inset 0 1px 0 rgba(255,255,255,.05);
-    transition:transform .6s ease;
-    position:relative;overflow:hidden;
-  }
-  .card-3d::before{
-    content:'';position:absolute;
-    top:-50%;left:-50%;width:200%;height:200%;
-    background:radial-gradient(circle at 60% 40%,rgba(26,58,255,.08) 0%,transparent 60%);
-    pointer-events:none;
-  }
-  .card-3d:hover{transform:rotateX(2deg) rotateY(-1deg)}
-
-  /* ===== SECTION LAYOUT ===== */
-  section{padding:7rem 5%}
-  .section-label{
-    font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
-    color:var(--cyan);font-weight:600;margin-bottom:1rem;
-  }
-  .section-title{
-    font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(2rem,4vw,3rem);
-    font-weight:700;line-height:1.1;
-    letter-spacing:-0.02em;margin-bottom:1.2rem;
-  }
-  .section-desc{color:var(--gray);font-size:1.05rem;max-width:600px;line-height:1.8}
-  .section-header{max-width:1200px;margin:0 auto 4rem}
-  .container{max-width:1200px;margin:0 auto}
-
-  /* ===== SOBRE ===== */
-  #sobre{background:var(--dark)}
-  .sobre-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
-    max-width:1200px;margin:0 auto;
-  }
-  .sobre-visual{position:relative}
-  .sobre-card-3d{
-    perspective:1000px;
-  }
-  .sobre-inner{
-    background:var(--dark2);
-    border:1px solid var(--border);border-radius:16px;padding:2.5rem;
-    transform:rotateY(-12deg) rotateX(5deg);
-    transform-style:preserve-3d;
-    box-shadow:30px 30px 60px rgba(0,0,0,.8),0 0 40px rgba(26,58,255,.15);
-    transition:transform .5s;
-    position:relative;
-  }
-  .sobre-inner:hover{transform:rotateY(-5deg) rotateX(2deg)}
-  .sobre-inner::after{
-    content:'';position:absolute;inset:0;border-radius:16px;
-    background:linear-gradient(135deg,rgba(0,212,255,.05),transparent);
-    pointer-events:none;
-  }
-  .skill-bar{margin-bottom:1.2rem}
-  .skill-label{display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.4rem;color:var(--gray2)}
-  .skill-track{height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
-  .skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 1.5s ease}
-  .sobre-text h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;color:var(--cyan);margin-bottom:.5rem}
-  .sobre-text p{color:var(--gray);line-height:1.9;margin-bottom:1.5rem}
-  .stats-row{display:flex;gap:2rem;margin-top:2rem}
-  .stat-item{text-align:center}
-  .stat-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:800;color:var(--white)}
-  .stat-num span{color:var(--cyan)}
-  .stat-label{font-size:.75rem;color:var(--gray);letter-spacing:.05em;text-transform:uppercase}
-
-  /* ===== PROJETOS ===== */
-  #projetos{background:var(--black)}
-  .projects-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-    gap:1.5rem;max-width:1200px;margin:0 auto;
-  }
-  .project-card{
-    position:relative;
-    background:var(--dark2);
-    border:1px solid var(--border);border-radius:16px;
-    overflow:hidden;
-    transition:all .4s;
-    cursor:pointer;
-    transform-style:preserve-3d;
-  }
-  .project-card:hover{
-    transform:translateY(-8px) scale(1.02);
-    border-color:rgba(26,58,255,.5);
-    box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 40px rgba(26,58,255,.2);
-  }
-  .project-img{
-    width:100%;height:200px;overflow:hidden;
-    background:linear-gradient(135deg,var(--dark3),var(--dark2));
-    position:relative;
-  }
-  .project-img img{width:100%;height:100%;object-fit:cover;opacity:.7;transition:opacity .3s}
-  .project-card:hover .project-img img{opacity:.9}
-  .project-overlay{
-    position:absolute;inset:0;
-    background:linear-gradient(to bottom,transparent 40%,rgba(10,10,15,.95));
-  }
-  .project-tech{
-    position:absolute;top:12px;right:12px;
-    display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end;
-  }
-  .tech-tag{
-    background:rgba(10,10,15,.85);border:1px solid var(--border);
-    padding:.2rem .6rem;border-radius:4px;font-size:.7rem;color:var(--cyan);
-    backdrop-filter:blur(4px);
-  }
-  .project-info{padding:1.5rem}
-  .project-info h3{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
-  .project-info p{color:var(--gray);font-size:.9rem;line-height:1.7;margin-bottom:1rem}
-  .project-link{
-    color:var(--blue3);text-decoration:none;font-size:.85rem;font-weight:600;
-    display:inline-flex;align-items:center;gap:.3rem;
-    transition:gap .2s;
-  }
-  .project-link:hover{gap:.6rem;color:var(--cyan)}
-  .project-link::after{content:'→'}
-
-  /* Project card tall */
-  .project-card.featured{grid-column:span 2}
-  @media(max-width:800px){.project-card.featured{grid-column:span 1}}
-
-  /* ===== SERVIÇOS ===== */
-  #servicos{background:var(--dark)}
-  .services-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
-    max-width:1200px;margin:0 auto;
-  }
-  @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:600px){.services-grid{grid-template-columns:1fr}}
-
-  .service-card{
-    background:var(--dark2);
-    border:1px solid var(--border);border-radius:16px;
-    padding:2rem;
-    transition:all .4s;
-    position:relative;overflow:hidden;
-    transform-style:preserve-3d;
-  }
-  .service-card::before{
-    content:'';position:absolute;
-    top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,transparent,var(--blue),var(--cyan),transparent);
-    opacity:0;transition:opacity .3s;
-  }
-  .service-card:hover{
-    transform:translateY(-6px) rotateX(3deg);
-    border-color:rgba(26,58,255,.4);
-    box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 30px rgba(26,58,255,.15);
-  }
-  .service-card:hover::before{opacity:1}
-  .service-icon{
-    width:52px;height:52px;
-    border:1px solid var(--border);border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    margin-bottom:1.3rem;
-    background:rgba(26,58,255,.1);
-    transition:all .3s;
-  }
-  .service-card:hover .service-icon{
-    background:rgba(26,58,255,.2);
-    box-shadow:0 0 20px rgba(26,58,255,.3);
-  }
-  .service-icon svg{width:24px;height:24px;stroke:var(--cyan);fill:none;stroke-width:1.5}
-  .service-card h3{
-    font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;
-    margin-bottom:.7rem;
-  }
-  .service-card p{color:var(--gray);font-size:.88rem;line-height:1.8;margin-bottom:1.2rem}
-  .service-list{list-style:none}
-  .service-list li{
-    color:var(--gray);font-size:.82rem;
-    padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.04);
-    display:flex;align-items:center;gap:.5rem;
-  }
-  .service-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0}
-
-  /* Highlight card */
-  .service-card.highlight{
-    background:linear-gradient(135deg,rgba(26,58,255,.15),rgba(0,212,255,.05));
-    border-color:rgba(26,58,255,.4);
-  }
-
-  /* ===== DEPOIMENTO ===== */
-  #depoimento{background:var(--black)}
-  .testimonial-3d{
-    max-width:800px;margin:0 auto;perspective:1000px;
-  }
-  .testimonial-inner{
-    background:var(--dark2);
-    border:1px solid var(--border);border-radius:20px;
-    padding:4rem;text-align:center;
-    transform:rotateX(5deg);
-    transform-style:preserve-3d;
-    box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 60px rgba(26,58,255,.1);
-    position:relative;overflow:hidden;
-    transition:transform .5s;
-  }
-  .testimonial-inner:hover{transform:rotateX(1deg)}
-  .testimonial-inner::before{
-    content:'';position:absolute;inset:0;
-    background:radial-gradient(circle at 50% 0%,rgba(26,58,255,.12),transparent 60%);
-    pointer-events:none;
-  }
-  .quote-mark{
-    font-size:5rem;line-height:.6;color:var(--blue);
-    font-family:Georgia,serif;margin-bottom:1rem;display:block;
-    opacity:.4;
-  }
-  .testimonial-text{
-    font-size:1.25rem;line-height:1.8;color:var(--gray2);
-    font-style:italic;margin-bottom:2rem;position:relative;z-index:1;
-  }
-  .testimonial-author{
-    font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--white);
-  }
-  .testimonial-role{color:var(--cyan);font-size:.85rem;margin-top:.2rem}
-
-  /* ===== FORMULÁRIO ===== */
-  #contato{background:var(--dark)}
-  .contact-grid{
-    display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;
-    max-width:1100px;margin:0 auto;
-  }
-  @media(max-width:800px){.contact-grid{grid-template-columns:1fr}}
-
-  .contact-info h2{
-    font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;
-    margin-bottom:1rem;line-height:1.2;
-  }
-  .contact-info p{color:var(--gray);line-height:1.8;margin-bottom:2rem}
-  .contact-item{
-    display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;
-  }
-  .contact-item-icon{
-    width:44px;height:44px;
-    background:rgba(26,58,255,.1);border:1px solid var(--border);
-    border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  }
-  .contact-item-icon svg{width:20px;height:20px;stroke:var(--cyan);fill:none;stroke-width:1.5}
-  .contact-item-text{font-size:.9rem}
-  .contact-item-text span{display:block;color:var(--gray);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.15rem}
-  .contact-item-text a{color:var(--white);text-decoration:none;transition:color .2s}
-  .contact-item-text a:hover{color:var(--cyan)}
-
-  /* Form */
-  .form-3d{perspective:1000px}
-  .form-card{
-    background:var(--dark2);
-    border:1px solid var(--border);border-radius:20px;padding:2.5rem;
-    transform:rotateY(5deg) rotateX(3deg);
-    transform-style:preserve-3d;
-    box-shadow:20px 20px 60px rgba(0,0,0,.6),-5px -5px 30px rgba(26,58,255,.05);
-    transition:transform .5s;
-    position:relative;overflow:hidden;
-  }
-  .form-card::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:1px;
-    background:linear-gradient(90deg,transparent,var(--blue),var(--cyan),transparent);
-  }
-  .form-card:hover{transform:rotateY(2deg) rotateX(1deg)}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-  @media(max-width:600px){.form-row{grid-template-columns:1fr}}
-  .field{margin-bottom:1.2rem}
-  .field label{
-    display:block;font-size:.8rem;color:var(--gray);
-    margin-bottom:.5rem;letter-spacing:.05em;text-transform:uppercase;
-    font-weight:500;
-  }
-  .field input,
-  .field select,
-  .field textarea{
-    width:100%;padding:.85rem 1rem;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:10px;color:var(--white);
-    font-family:'Inter',sans-serif;font-size:.9rem;
-    transition:all .25s;outline:none;
-    -webkit-appearance:none;appearance:none;
-  }
-  .field input:focus,
-  .field select:focus,
-  .field textarea:focus{
-    border-color:var(--blue);
-    background:rgba(26,58,255,.06);
-    box-shadow:0 0 0 3px rgba(26,58,255,.15);
-  }
-  .field input::placeholder,
-  .field textarea::placeholder{color:rgba(255,255,255,.2)}
-  .field select option{background:var(--dark2)}
-  .field textarea{resize:vertical;min-height:120px}
-  .form-submit{
-    width:100%;padding:1rem;
-    background:var(--blue);color:#fff;
-    border:none;border-radius:10px;
-    font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;
-    cursor:pointer;transition:all .25s;
-    box-shadow:0 0 30px rgba(26,58,255,.4);
-    letter-spacing:.02em;
-  }
-  .form-submit:hover{
-    background:var(--blue2);transform:translateY(-2px);
-    box-shadow:0 0 50px rgba(26,58,255,.6);
-  }
-
-  /* ===== FOOTER ===== */
-  footer{
-    background:var(--black);
-    border-top:1px solid var(--border);
-    padding:3rem 5%;
-    text-align:center;
-  }
-  .footer-logo{
-    font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;
-    margin-bottom:.5rem;display:block;
-  }
-  .footer-sub{color:var(--gray);font-size:.85rem;margin-bottom:1.5rem}
-  .footer-links{display:flex;justify-content:center;gap:2rem;list-style:none;margin-bottom:2rem}
-  .footer-links a{color:var(--gray);text-decoration:none;font-size:.85rem;transition:color .2s}
-  .footer-links a:hover{color:var(--white)}
-  .footer-copy{color:rgba(136,146,176,.5);font-size:.78rem}
-
-  /* ===== PARTICLES BG ===== */
-  #particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-  .particle{
-    position:absolute;border-radius:50%;
-    background:rgba(26,58,255,.6);
-    animation:particleFloat linear infinite;
-  }
-
-  @keyframes particleFloat{
-    0%{transform:translateY(100vh) translateX(0) scale(0);opacity:0}
-    10%{opacity:1}
-    90%{opacity:.5}
-    100%{transform:translateY(-20px) translateX(var(--drift)) scale(1);opacity:0}
-  }
-
-  /* ===== REVEAL ANIMATIONS ===== */
-  .reveal{
-    opacity:0;transform:translateY(40px);
-    transition:opacity .8s ease,transform .8s ease;
-  }
-  .reveal.visible{opacity:1;transform:translateY(0)}
-  .reveal-left{
-    opacity:0;transform:translateX(-40px);
-    transition:opacity .8s ease,transform .8s ease;
-  }
-  .reveal-left.visible{opacity:1;transform:translateX(0)}
-  .reveal-right{
-    opacity:0;transform:translateX(40px);
-    transition:opacity .8s ease,transform .8s ease;
-  }
-  .reveal-right.visible{opacity:1;transform:translateX(0)}
-
-  /* ===== MOBILE NAV ===== */
-  .hamburger{
-    display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem;
-    border:none;background:transparent;
-  }
-  .hamburger span{width:22px;height:2px;background:var(--white);border-radius:1px;transition:all .3s}
-  .mobile-menu{
-    display:none;position:fixed;top:0;left:0;right:0;bottom:0;
-    background:rgba(10,10,15,.98);z-index:999;
-    flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
-  }
-  .mobile-menu a{color:var(--white);text-decoration:none;font-size:1.5rem;font-weight:600}
-  @media(max-width:768px){
-    .nav-links{display:none}
-    .nav-cta{display:none}
-    .hamburger{display:flex}
-    .sobre-grid{grid-template-columns:1fr}
-    .sobre-visual{display:none}
-  }
-
-  /* ===== GLOW DIVIDER ===== */
-  .glow-line{
-    height:1px;
-    background:linear-gradient(90deg,transparent,var(--blue),var(--cyan),transparent);
-    opacity:.3;max-width:1200px;margin:0 auto;
-  }
-
-  /* ===== 3D FLOATING TECH ICONS ===== */
-  .tech-float{
-    display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;
-    margin-top:4rem;max-width:1200px;margin:4rem auto 0;
-  }
-  .tech-pill{
-    padding:.5rem 1.2rem;
-    border:1px solid var(--border);border-radius:50px;
-    font-size:.82rem;color:var(--gray2);
-    background:rgba(26,58,255,.06);
-    transition:all .3s;
-  }
-  .tech-pill:hover{
-    background:rgba(26,58,255,.15);color:var(--white);
-    border-color:rgba(26,58,255,.5);transform:translateY(-3px);
-  }
-</style>
+<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
-<!-- Particles -->
 <div id="particles"></div>
 
-<!-- NAV -->
 <nav id="navbar">
   <a class="nav-logo" href="#">
     <div class="logo-mark">ES</div>
@@ -609,25 +22,23 @@
   <ul class="nav-links">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#projetos">Projetos</a></li>
-    <li><a href="#servicos">Servicos</a></li>
+    <li><a href="#servicos">Serviços</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
-  <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="nav-cta" target="_blank">Solicitar Orcamento</a>
+  <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="nav-cta" target="_blank">Solicitar Orçamento</a>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#sobre" onclick="closeMobile()">Sobre</a>
   <a href="#projetos" onclick="closeMobile()">Projetos</a>
-  <a href="#servicos" onclick="closeMobile()">Servicos</a>
+  <a href="#servicos" onclick="closeMobile()">Serviços</a>
   <a href="#contato" onclick="closeMobile()">Contato</a>
   <a href="https://wa.me/5521972894449" target="_blank" style="color:var(--cyan)">WhatsApp</a>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-grid-fade"></div>
@@ -638,7 +49,7 @@
   <div class="hero-inner">
     <div class="hero-badge reveal">
       <span class="badge-dot"></span>
-      Disponivel para novos projetos
+      Disponível para novos projetos
     </div>
     <h1 class="reveal">
       Engenharia Web<br>
@@ -646,12 +57,12 @@
     </h1>
     <p class="hero-sub reveal">
       Desenvolvemos sites corporativos, landing pages e plataformas digitais
-      construidas para converter, escalar e durar. Cada linha de codigo pensada
-      para o crescimento do seu negocio.
+      construídas para converter, escalar e durar. Cada linha de código pensada
+      para o crescimento do seu negócio.
     </p>
     <div class="hero-actions reveal">
       <a href="https://wa.me/5521972894449?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-primary" target="_blank">
-        Solicitar Orcamento
+        Solicitar Orçamento
       </a>
       <a href="#projetos" class="btn-outline">Ver Projetos</a>
     </div>
@@ -665,13 +76,12 @@
 
 <div class="glow-line"></div>
 
-<!-- SOBRE -->
 <section id="sobre">
   <div class="sobre-grid">
     <div class="sobre-visual reveal-left">
       <div class="sobre-card-3d">
         <div class="sobre-inner">
-          <p style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1.5rem;color:var(--white)">Stack Tecnica</p>
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1.5rem;color:var(--white)">Stack Técnica</p>
           <div class="skill-bar">
             <div class="skill-label"><span>React / Next.js</span><span>95%</span></div>
             <div class="skill-track"><div class="skill-fill" style="width:0%" data-width="95%"></div></div>
@@ -707,7 +117,7 @@
             </div>
             <div class="stat-item">
               <div class="stat-num">100<span>%</span></div>
-              <div class="stat-label">Satisfacao</div>
+              <div class="stat-label">Satisfação</div>
             </div>
           </div>
         </div>
@@ -716,29 +126,28 @@
 
     <div class="sobre-text reveal-right">
       <div class="section-label">Sobre</div>
-      <h2 class="section-title">Desenvolvimento estrategico para o seu negocio</h2>
-      <p>Sou o Joao Rafael, desenvolvedor web focado em construir a presenca digital de empresas atraves de sites e landing pages de alta performance.</p>
-      <p>Com formacao em Sistemas de Informacao e experiencia pratica no setor publico, desenvolvo solucoes completas — do design estrategico ate a codificacao final — com foco em resultados reais.</p>
-      <p>Na Engelke Systems, cada projeto e tratado como uma oportunidade de criar algo duradouro, seguro e escalavel. Tecnologia a servico do seu crescimento.</p>
-      <a href="#contato" class="btn-primary" style="margin-top:1.5rem;display:inline-flex">Falar com o Joao Rafael</a>
+      <h2 class="section-title">Desenvolvimento estratégico para o seu negócio</h2>
+      <p>Sou o João Rafael, desenvolvedor web focado em construir a presença digital de empresas através de sites e landing pages de alta performance.</p>
+      <p>Com formação em Sistemas de Informação e experiência prática no setor público, desenvolvo soluções completas do design estratégico até a codificação final com foco em resultados reais.</p>
+      <p>Na Engelke Systems, cada projeto é tratado como uma oportunidade de criar algo duradouro, seguro e escalável. Tecnologia a serviço do seu crescimento.</p>
+      <a href="#contato" class="btn-primary" style="margin-top:1.5rem;display:inline-flex">Falar com o João Rafael</a>
     </div>
   </div>
 </section>
 
 <div class="glow-line"></div>
 
-<!-- PROJETOS -->
 <section id="projetos">
   <div class="section-header reveal">
     <div class="section-label">Portfólio</div>
     <h2 class="section-title">Projetos em Destaque</h2>
-    <p class="section-desc">Plataformas desenvolvidas com foco em conversao, performance e experiencia do usuario.</p>
+    <p class="section-desc">Plataformas desenvolvidas com foco em conversão, performance e experiência do usuário.</p>
   </div>
 
   <div class="projects-grid">
     <div class="project-card reveal">
       <div class="project-img">
-        <img src="https://engelkesystems.vercel.app/assets/img/foto-bolsas.webp" alt="Catalogo Digital" loading="lazy">
+        <img src="https://engelkesystems.vercel.app/assets/img/foto-bolsas.webp" alt="Catálogo Digital" loading="lazy">
         <div class="project-overlay"></div>
         <div class="project-tech">
           <span class="tech-tag">Next.js 15</span>
@@ -747,8 +156,8 @@
         </div>
       </div>
       <div class="project-info">
-        <h3>Catalogo Digital Inteligente</h3>
-        <p>Sistema completo com painel administrativo, carrinho de compras e integracao direta com WhatsApp.</p>
+        <h3>Catálogo Digital Inteligente</h3>
+        <p>Sistema completo com painel administrativo, carrinho de compras e integração direta com WhatsApp.</p>
         <a href="https://modelo-site-3.vercel.app/loja" class="project-link" target="_blank">Acessar Projeto</a>
       </div>
     </div>
@@ -765,14 +174,14 @@
       </div>
       <div class="project-info">
         <h3>LT Advisors</h3>
-        <p>Plataforma institucional para empresa de leiloes e gestao de imoveis. Layout que transmite credibilidade e seguranca.</p>
+        <p>Plataforma institucional para empresa de leilões e gestão de imóveis. Layout que transmite credibilidade e segurança.</p>
         <a href="https://engelkejr.github.io/LT-Adivisors/" class="project-link" target="_blank">Acessar Projeto</a>
       </div>
     </div>
 
     <div class="project-card reveal">
       <div class="project-img">
-        <img src="https://engelkesystems.vercel.app/assets/img/ong.webp" alt="Projeto Amanha" loading="lazy">
+        <img src="https://engelkesystems.vercel.app/assets/img/ong.webp" alt="Projeto Amanhã" loading="lazy">
         <div class="project-overlay"></div>
         <div class="project-tech">
           <span class="tech-tag">React</span>
@@ -780,7 +189,7 @@
         </div>
       </div>
       <div class="project-info">
-        <h3>Projeto Amanha - ONG</h3>
+        <h3>Projeto Amanhã - ONG</h3>
         <p>Landing page desenvolvida para maximizar o impacto social. Foco em design acolhedor, acessibilidade e CTAs claros.</p>
         <a href="https://projetoamanh.vercel.app" class="project-link" target="_blank">Acessar Projeto</a>
       </div>
@@ -788,7 +197,7 @@
 
     <div class="project-card reveal">
       <div class="project-img">
-        <img src="https://engelkesystems.vercel.app/assets/img/dashboard-generico.webp" alt="Modelo Alta Conversao" loading="lazy">
+        <img src="https://engelkesystems.vercel.app/assets/img/dashboard-generico.webp" alt="Modelo Alta Conversão" loading="lazy">
         <div class="project-overlay"></div>
         <div class="project-tech">
           <span class="tech-tag">Performance</span>
@@ -796,8 +205,8 @@
         </div>
       </div>
       <div class="project-info">
-        <h3>Modelo de Alta Conversao</h3>
-        <p>Projeto com foco estrito em alta performance, responsividade e UX. Estrutura adaptavel a diferentes nichos corporativos.</p>
+        <h3>Modelo de Alta Conversão</h3>
+        <p>Projeto com foco estrito em alta performance, responsividade e UX. Estrutura adaptável a diferentes nichos corporativos.</p>
         <a href="https://modelo1engelkejr.vercel.app" class="project-link" target="_blank">Acessar Projeto</a>
       </div>
     </div>
@@ -809,12 +218,12 @@
         <div class="project-tech">
           <span class="tech-tag">Interatividade</span>
           <span class="tech-tag">Design Visual</span>
-          <span class="tech-tag">Animacoes</span>
+          <span class="tech-tag">Animações</span>
         </div>
       </div>
       <div class="project-info">
-        <h3>Modelo Criativo e Dinamico</h3>
-        <p>Template focado em interatividade e design visual arrojado. Ideal para agencias, criadores de conteudo e empresas com forte identidade visual.</p>
+        <h3>Modelo Criativo e Dinâmico</h3>
+        <p>Template focado em interatividade e design visual arrojado. Ideal para agências, criadores de conteúdo e empresas com forte identidade visual.</p>
         <a href="https://modelo-site-2.vercel.app/index.html" class="project-link" target="_blank">Acessar Projeto</a>
       </div>
     </div>
@@ -823,12 +232,11 @@
 
 <div class="glow-line"></div>
 
-<!-- SERVIÇOS -->
 <section id="servicos">
   <div class="section-header reveal">
     <div class="section-label">Serviços</div>
     <h2 class="section-title">Soluções para cada etapa</h2>
-    <p class="section-desc">Desenvolvemos a presenca digital que a sua empresa precisa para se destacar no mercado.</p>
+    <p class="section-desc">Desenvolvemos a presença digital que a sua empresa precisa para se destacar no mercado.</p>
   </div>
 
   <div class="services-grid">
@@ -837,11 +245,11 @@
         <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
       <h3>Landing Page Express</h3>
-      <p>Pagina unica focada 100% em conversao imediata. Ideal para lancamentos e campanhas de anuncios.</p>
+      <p>Página única focada 100% em conversão imediata. Ideal para lançamentos e campanhas de anúncios.</p>
       <ul class="service-list">
-        <li>Design de alta conversao</li>
-        <li>Carregamento ultra-rapido</li>
-        <li>Botao WhatsApp integrado</li>
+        <li>Design de alta conversão</li>
+        <li>Carregamento ultrarrápido</li>
+        <li>Botão WhatsApp integrado</li>
         <li>Analytics configurado</li>
       </ul>
     </div>
@@ -851,11 +259,11 @@
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
       </div>
       <h3>Site Institucional</h3>
-      <p>Vitrine profissional completa para empresas que buscam autoridade e presenca online solida.</p>
+      <p>Vitrine profissional completa para empresas que buscam autoridade e presença online sólida.</p>
       <ul class="service-list">
-        <li>Multiplas paginas</li>
+        <li>Multiplas páginas</li>
         <li>SEO local otimizado</li>
-        <li>Integracao Google Maps</li>
+        <li>Integração Google Maps</li>
         <li>Design responsivo</li>
       </ul>
     </div>
@@ -864,12 +272,12 @@
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       </div>
-      <h3>Catalogo Digital</h3>
-      <p>Ideal para comercios que recebem pedidos pelo WhatsApp de forma organizada e automatizada.</p>
+      <h3>Catálogo Digital</h3>
+      <p>Ideal para comércios que recebem pedidos pelo WhatsApp de forma organizada e automatizada.</p>
       <ul class="service-list">
         <li>Galeria categorizada</li>
         <li>Pedido via WhatsApp</li>
-        <li>QR Code para balcao</li>
+        <li>QR Code para balcão</li>
         <li>Painel administrativo</li>
       </ul>
     </div>
@@ -879,12 +287,12 @@
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
       </div>
       <h3>Loja Virtual</h3>
-      <p>Sua loja aberta 24h com pagamentos automatizados e gestao de estoque profissional.</p>
+      <p>Sua loja aberta 24h com pagamentos automatizados e gestão de estoque profissional.</p>
       <ul class="service-list">
-        <li>Pix, Cartao e Boleto</li>
-        <li>Calculo de frete</li>
+        <li>Pix, Cartão e Boleto</li>
+        <li>Cálculo de frete</li>
         <li>Carrinho completo</li>
-        <li>Gestao de estoque</li>
+        <li>Gestão de estoque</li>
       </ul>
     </div>
 
@@ -893,12 +301,12 @@
         <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
       </div>
       <h3>Blog / Portal</h3>
-      <p>Atraia visitantes organicos com conteudos otimizados para o Google e construa autoridade no seu setor.</p>
+      <p>Atraia visitantes orgânicos com conteúdos otimizados para o Google e construa autoridade no seu setor.</p>
       <ul class="service-list">
-        <li>Otimizacao SEO</li>
+        <li>Otimização SEO</li>
         <li>Sistema de busca</li>
         <li>Newsletter integrada</li>
-        <li>Painel de conteudo</li>
+        <li>Painel de conteúdo</li>
       </ul>
     </div>
 
@@ -906,13 +314,13 @@
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <h3>Suporte e Manutencao</h3>
-      <p>Planos de hospedagem e atualizacao continua. Voce foca nas vendas, nos cuidamos da tecnologia.</p>
+      <h3>Suporte e Manutenção</h3>
+      <p>Planos de hospedagem e atualização contínua. Você foca nas vendas, nós cuidamos da tecnologia.</p>
       <ul class="service-list">
         <li>Hospedagem gerenciada</li>
-        <li>Atualizacoes mensais</li>
+        <li>Atualizações mensais</li>
         <li>Monitoramento 24/7</li>
-        <li>Suporte prioritario</li>
+        <li>Suporte prioritário</li>
       </ul>
     </div>
   </div>
@@ -937,8 +345,8 @@
   <div class="testimonial-3d reveal">
     <div class="testimonial-inner">
       <span class="quote-mark">"</span>
-      <p class="testimonial-text">Na Engelke Systems, acreditamos que todo negocio merece uma infraestrutura digital robusta, segura e de alta performance. Desenvolvemos cada linha de codigo pensando na longevidade e no crescimento do seu projeto.</p>
-      <div class="testimonial-author">Joao Rafael</div>
+      <p class="testimonial-text">Na Engelke Systems, acreditamos que todo negócio merece uma infraestrutura digital robusta, segura e de alta performance. Desenvolvemos cada linha de código pensando na longevidade e no crescimento do seu projeto.</p>
+      <div class="testimonial-author">João Rafael</div>
       <div class="testimonial-role">Engenheiro de Software | Engelke Systems</div>
     </div>
   </div>
@@ -946,13 +354,12 @@
 
 <div class="glow-line"></div>
 
-<!-- CONTATO / FORMULÁRIO -->
 <section id="contato">
   <div class="contact-grid">
     <div class="contact-info reveal-left">
       <div class="section-label">Contato</div>
-      <h2 class="section-title">Pronto para comecar?</h2>
-      <p>Preencha o formulario e entraremos em contato em ate 24 horas. Voce tambem pode chamar diretamente pelo WhatsApp.</p>
+      <h2 class="section-title">Pronto para começar?</h2>
+      <p>Preencha o formulário e entraremos em contato em até 24 horas. Você também pode chamar diretamente pelo WhatsApp.</p>
 
       <div class="contact-item">
         <div class="contact-item-icon">
@@ -1008,12 +415,12 @@
           </div>
         </div>
         <div class="field">
-          <label for="servico">Servico de interesse</label>
+          <label for="servico">Serviço de interesse</label>
           <select id="servico" name="servico">
-            <option value="" disabled selected>Selecione um servico</option>
+            <option value="" disabled selected>Selecione um serviço</option>
             <option>Landing Page Express</option>
             <option>Site Institucional</option>
-            <option>Catalogo Digital</option>
+            <option>Catálogo Digital</option>
             <option>Loja Virtual</option>
             <option>Blog / Portal</option>
             <option>Suporte e Manutenção</option>
@@ -1021,126 +428,28 @@
           </select>
         </div>
         <div class="field">
-          <label for="projeto">Descricao do projeto</label>
-          <textarea id="projeto" name="projeto" placeholder="Conte sobre o seu negocio, objetivos e qualquer detalhe relevante..."></textarea>
+          <label for="projeto">Descrição do projeto</label>
+          <textarea id="projeto" name="projeto" placeholder="Conte sobre o seu negócio, objetivos e qualquer detalhe relevante..."></textarea>
         </div>
-        <button type="submit" class="form-submit">Enviar Solicitacao pelo WhatsApp</button>
+        <button type="submit" class="form-submit">Enviar Solicitação pelo WhatsApp</button>
       </form>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span class="footer-logo">Engelke Systems</span>
-  <p class="footer-sub">Engenharia web de alta performance para o seu negocio.</p>
+  <p class="footer-sub">Engenharia web de alta performance para o seu negócio.</p>
   <ul class="footer-links">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#projetos">Projetos</a></li>
-    <li><a href="#servicos">Servicos</a></li>
+    <li><a href="#servicos">Serviços</a></li>
     <li><a href="#contato">Contato</a></li>
     <li><a href="https://wa.me/5521972894449" target="_blank">WhatsApp</a></li>
   </ul>
-  <p class="footer-copy">© 2025 Engelke Systems. Desenvolvido com excelencia por Joao Rafael.</p>
+  <p class="footer-copy">© 2025 Engelke Systems. Desenvolvido com excelência por João Rafael.</p>
 </footer>
 
-<script>
-// === PARTICLES ===
-(function(){
-  const container=document.getElementById('particles');
-  for(let i=0;i<25;i++){
-    const p=document.createElement('div');
-    p.className='particle';
-    const size=Math.random()*3+1;
-    const left=Math.random()*100;
-    const duration=Math.random()*20+15;
-    const delay=Math.random()*20;
-    const drift=(Math.random()-0.5)*200+'px';
-    p.style.cssText=`
-      width:${size}px;height:${size}px;
-      left:${left}%;
-      animation-duration:${duration}s;
-      animation-delay:-${delay}s;
-      --drift:${drift};
-    `;
-    container.appendChild(p);
-  }
-})();
-
-// === SCROLL REVEAL ===
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('visible');
-      // Animate skill bars
-      e.target.querySelectorAll&&e.target.querySelectorAll('.skill-fill').forEach(bar=>{
-        bar.style.width=bar.dataset.width;
-      });
-    }
-  });
-},{threshold:0.15});
-
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
-
-// Also observe skill bars specifically
-document.querySelectorAll('.sobre-inner').forEach(el=>observer.observe(el));
-
-// === NAVBAR SCROLL ===
-window.addEventListener('scroll',()=>{
-  const nav=document.getElementById('navbar');
-  nav.style.background=window.scrollY>50?'rgba(10,10,15,0.97)':'rgba(10,10,15,0.85)';
-});
-
-// === MOBILE MENU ===
-const hamburger=document.getElementById('hamburger');
-const mobileMenu=document.getElementById('mobileMenu');
-hamburger.addEventListener('click',()=>{
-  const open=mobileMenu.style.display==='flex';
-  mobileMenu.style.display=open?'none':'flex';
-});
-function closeMobile(){mobileMenu.style.display='none'}
-
-// === 3D TILT on cards ===
-document.querySelectorAll('.project-card,.service-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const rect=card.getBoundingClientRect();
-    const x=(e.clientX-rect.left)/rect.width-0.5;
-    const y=(e.clientY-rect.top)/rect.height-0.5;
-    card.style.transform=`translateY(-6px) rotateY(${x*8}deg) rotateX(${-y*8}deg) scale(1.02)`;
-  });
-  card.addEventListener('mouseleave',()=>{
-    card.style.transform='';
-  });
-});
-
-// === FORM SUBMIT → WHATSAPP ===
-document.getElementById('contactForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  const nome=document.getElementById('nome').value;
-  const empresa=document.getElementById('empresa').value;
-  const whatsapp=document.getElementById('whatsapp').value;
-  const email=document.getElementById('email').value;
-  const servico=document.getElementById('servico').value;
-  const projeto=document.getElementById('projeto').value;
-  
-  let msg=`Ola! Vim pelo site Engelke Systems e gostaria de solicitar um orcamento.%0A%0A`;
-  msg+=`*Nome:* ${nome}%0A`;
-  if(empresa) msg+=`*Empresa:* ${empresa}%0A`;
-  if(whatsapp) msg+=`*WhatsApp:* ${whatsapp}%0A`;
-  if(email) msg+=`*E-mail:* ${email}%0A`;
-  if(servico) msg+=`*Servico:* ${servico}%0A`;
-  if(projeto) msg+=`%0A*Descricao do projeto:*%0A${encodeURIComponent(projeto)}`;
-  
-  window.open(`https://wa.me/5521972894449?text=${msg}`,'_blank');
-});
-
-// === SKILL BARS initial trigger ===
-setTimeout(()=>{
-  document.querySelectorAll('.skill-fill').forEach(bar=>{
-    const parentVisible=bar.closest('.visible');
-    if(parentVisible) bar.style.width=bar.dataset.width;
-  });
-},500);
-</script>
+<script src="assets/script.js"></script>
 </body>
 </html>

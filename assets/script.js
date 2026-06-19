@@ -68,13 +68,13 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
   const servico=document.getElementById('servico').value;
   const projeto=document.getElementById('projeto').value;
   
-  let msg=`Ola! Vim pelo site Engelke Systems e gostaria de solicitar um orcamento.%0A%0A`;
+  let msg=`Olá! Vim pelo site Engelke Systems e gostaria de solicitar um orçamento.%0A%0A`;
   msg+=`*Nome:* ${nome}%0A`;
   if(empresa) msg+=`*Empresa:* ${empresa}%0A`;
   if(whatsapp) msg+=`*WhatsApp:* ${whatsapp}%0A`;
   if(email) msg+=`*E-mail:* ${email}%0A`;
-  if(servico) msg+=`*Servico:* ${servico}%0A`;
-  if(projeto) msg+=`%0A*Descricao do projeto:*%0A${encodeURIComponent(projeto)}`;
+  if(servico) msg+=`*Serviço:* ${servico}%0A`;
+  if(projeto) msg+=`%0A*Descrição do projeto:*%0A${encodeURIComponent(projeto)}`;
   
   window.open(`https://wa.me/5521972894449?text=${msg}`,'_blank');
 });
