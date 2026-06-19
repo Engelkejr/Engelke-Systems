@@ -40,14 +40,31 @@ for (let i = 0; i < particleCount; i++) {
 }
 
 let mouse = { x: -1000, y: -1000 };
+
+// --- EVENTOS PARA PC (MOUSE) ---
 window.addEventListener('mousemove', e => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
 });
 window.addEventListener('mouseout', () => {
-    mouse.x = -1000; mouse.y = -1000;
+    mouse.x = -1000;
+    mouse.y = -1000;
 });
 
+// --- EVENTOS PARA CELULAR (DEDO/TOUCH) ---
+window.addEventListener('touchstart', e => {
+    mouse.x = e.touches[0].clientX;
+    mouse.y = e.touches[0].clientY;
+});
+window.addEventListener('touchmove', e => {
+    mouse.x = e.touches[0].clientX;
+    mouse.y = e.touches[0].clientY;
+});
+window.addEventListener('touchend', () => {
+    // Quando soltar o dedo, a conexão magnética desaparece
+    mouse.x = -1000;
+    mouse.y = -1000;
+});
 function animateCanvas() {
     ctx.fillStyle = '#050508';
     ctx.fillRect(0, 0, width, height);
