@@ -568,7 +568,7 @@ footer{
   background:rgba(26,58,255,.15);color:var(--white);
   border-color:rgba(26,58,255,.5);transform:translateY(-3px);
 }
-/* --- FUNDO CANVAS 3D OTIMIZADO --- */
+/* --- FUNDO CANVAS ISOLADO --- */
 #bg-canvas {
   position: fixed;
   top: 0;
@@ -577,23 +577,44 @@ footer{
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  /* Força aceleração de hardware (Placa de vídeo) */
   transform: translateZ(0); 
   will-change: transform;
 }
 
-/* --- EFEITO GLASSMORPHISM MAIS LEVE --- */
+/* --- GRID 3D EM MOVIMENTO (TIPO TRON) --- */
+.hero-grid {
+  position: absolute;
+  width: 200vw;
+  height: 200vh;
+  left: -50vw;
+  top: -20vh;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.15) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.15) 2px, transparent 2px);
+  background-size: 80px 80px;
+  transform-origin: center top;
+  transform: perspective(1000px) rotateX(75deg) translateY(0);
+  animation: planeMove 4s linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@keyframes planeMove {
+  0% { transform: perspective(1000px) rotateX(75deg) translateY(0); }
+  100% { transform: perspective(1000px) rotateX(75deg) translateY(80px); }
+}
+
 #sobre, #projetos, #servicos, #depoimento, #contato {
-  background: rgba(10, 10, 15, 0.75) !important; /* Um pouco mais opaco para disfarçar o blur menor */
-  backdrop-filter: blur(3px); /* Reduzido de 8px para 3px - Salva MUITO FPS */
-  -webkit-backdrop-filter: blur(3px);
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  background: linear-gradient(135deg, rgba(15, 15, 26, 0.92), rgba(10, 10, 15, 0.96)) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 1;
 }
 
 footer {
-  background: rgba(5, 5, 8, 0.9) !important;
+  background: rgba(5, 5, 8, 0.98) !important;
   position: relative;
   z-index: 1;
 }
