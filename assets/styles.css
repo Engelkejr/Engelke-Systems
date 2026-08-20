@@ -1,4 +1,4 @@
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+﻿*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --black:#0a0a0f;
   --dark:#0f0f1a;
@@ -568,7 +568,7 @@ footer{
   background:rgba(26,58,255,.15);color:var(--white);
   border-color:rgba(26,58,255,.5);transform:translateY(-3px);
 }
-/* --- FUNDO CANVAS ISOLADO --- */
+
 #bg-canvas {
   position: fixed;
   top: 0;
@@ -581,7 +581,6 @@ footer{
   will-change: transform;
 }
 
-/* --- GRID 3D EM MOVIMENTO (TIPO TRON) --- */
 .hero-grid {
   position: absolute;
   width: 200vw;

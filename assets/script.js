@@ -1,4 +1,4 @@
-const canvas = document.getElementById('bg-canvas');
+﻿const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d', { alpha: false }); 
 let width, height;
 let particles = [];
@@ -22,7 +22,7 @@ class Particle {
     update() {
         this.x += this.vx / this.z;
         this.y += this.vy / this.z;
-        
+
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
     }
@@ -41,7 +41,6 @@ for (let i = 0; i < particleCount; i++) {
 
 let mouse = { x: -1000, y: -1000 };
 
-// --- EVENTOS PARA PC (MOUSE) ---
 window.addEventListener('mousemove', e => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
@@ -51,7 +50,6 @@ window.addEventListener('mouseout', () => {
     mouse.y = -1000;
 });
 
-// --- EVENTOS PARA CELULAR (DEDO/TOUCH) ---
 window.addEventListener('touchstart', e => {
     mouse.x = e.touches[0].clientX;
     mouse.y = e.touches[0].clientY;
@@ -61,27 +59,27 @@ window.addEventListener('touchmove', e => {
     mouse.y = e.touches[0].clientY;
 });
 window.addEventListener('touchend', () => {
-    // Quando soltar o dedo, a conexão magnética desaparece
+
     mouse.x = -1000;
     mouse.y = -1000;
 });
 function animateCanvas() {
     ctx.fillStyle = '#050508';
     ctx.fillRect(0, 0, width, height);
-    
+
     for (let i = 0; i < particles.length; i++) {
         particles[i].update();
         particles[i].draw();
-        
+
         for (let j = i + 1; j < particles.length; j++) {
             let dx = particles[i].x - particles[j].x;
             let dy = particles[i].y - particles[j].y;
-            
+
             if (Math.abs(dx) < 120 && Math.abs(dy) < 120) {
                 let dist = Math.sqrt(dx * dx + dy * dy);
                 if (dist < 120) {
                     ctx.beginPath();
-                    // O Fade suave voltou!
+
                     ctx.strokeStyle = `rgba(26, 58, 255, ${0.6 - (dist / 200)})`; 
                     ctx.lineWidth = 0.6;
                     ctx.moveTo(particles[i].x, particles[i].y);
@@ -157,7 +155,7 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
   const email=document.getElementById('email').value;
   const servico=document.getElementById('servico').value;
   const projeto=document.getElementById('projeto').value;
-  
+
   let msg=`Olá! Vim pelo site Engelke Systems e gostaria de solicitar um orçamento.%0A%0A`;
   msg+=`*Nome:* ${nome}%0A`;
   if(empresa) msg+=`*Empresa:* ${empresa}%0A`;
@@ -165,7 +163,7 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
   if(email) msg+=`*E-mail:* ${email}%0A`;
   if(servico) msg+=`*Serviço:* ${servico}%0A`;
   if(projeto) msg+=`%0A*Descrição do projeto:*%0A${encodeURIComponent(projeto)}`;
-  
+
   window.open(`https://wa.me/5521972894449?text=${msg}`,'_blank');
 });
 
